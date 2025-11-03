@@ -1,0 +1,43 @@
+<div class="container-fluid">
+    <div class="col-6">
+
+        <table class="table table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th class="h4">#</th>
+                    <th class="h4">Name</th>
+                    <th class="h4">Channel</th>
+                    <th class="h4">Seasons</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let s of series">
+                    <td>{{ s.id }}</td>
+                    <td>
+                        <a href="#" (click)="selectSerie(s); $event.preventDefault();"
+                            style="color: #007bff; text-decoration: none;">
+                            {{ s.name }}
+                        </a>
+                    </td>
+                    <td>{{ s.channel }}</td>
+                    <td>{{ s.seasons }}</td>
+
+                </tr>
+
+            </tbody>
+        </table>
+        <p class="fw-semibold"> Seasons Average {{avgSeasons | number: '1.0-0'}}
+        </p>
+        <div class="card shadow-sm" *ngIf="selectedSerie">
+            <img [src]="selectedSerie.image" class="card-img-top" [alt]="selectedSerie.name" />
+            <div class="card-body">
+                <h5 class="card-title">{{ selectedSerie.name }}</h5>
+                <p class="card-text">{{ selectedSerie.description }}</p>
+                <a [href]="selectedSerie.website" target="_blank" style="color: #007bff; text-decoration: none;">
+                    {{ selectedSerie.website }}
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
