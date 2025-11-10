@@ -1,0 +1,37 @@
+header {
+  background-color: #1ca2b8;
+  color: black;
+  padding: 10px 20px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+
+header img {
+  height: 30px;
+  margin-left: -5px;
+  margin-right: 5px;
+}
+
+.table-container {
+  margin-top: 25px;
+  margin-left: 75px;
+  width: 45%;
+}
+
+#series-table thead tr {
+  background-color: #ffffff;
+}
+
+#series-table tbody tr {
+  background-color: #f8f9fa;
+}
+
+#series-table td:first-child {
+  font-weight: bold;
+}
+
+#average-seasons {
+  margin-top: 10px;
+  margin-left: 20px;
+}

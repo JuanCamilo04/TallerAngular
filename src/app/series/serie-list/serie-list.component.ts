@@ -1,20 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { Serie } from '../serie';
-import { dataSeries } from '../dataSeries';
 import { SerieService } from '../serie.service';
 
 @Component({
   selector: 'app-serie-list',
   standalone: false,
   templateUrl: './serie-list.component.html',
-  styleUrl: './serie-list.component.css',
+  styleUrls: ['./serie-list.component.css'],
 })
 export class SerieListComponent implements OnInit {
-  series: Array<Serie> = [];
+  series: Serie[] = [];
   avgSeasons: number = 0;
   selectedSerie: Serie | null = null;
 
   constructor(private serieService: SerieService) {}
+
+  ngOnInit(): void {
+    this.getSeriesList();
+  }
 
   getSeriesList(): void {
     this.serieService.getSeries().subscribe((data) => {
@@ -26,11 +29,7 @@ export class SerieListComponent implements OnInit {
 
   getAvgSeasons(): number {
     const totalSeasons = this.series.reduce((total, s) => total + s.seasons, 0);
-    return totalSeasons / this.series.length;
-  }
-
-  ngOnInit() {
-    this.getSeriesList();
+    return this.series.length ? totalSeasons / this.series.length : 0;
   }
 
   selectSerie(serie: Serie): void {

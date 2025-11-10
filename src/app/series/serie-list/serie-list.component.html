@@ -1,43 +1,74 @@
-<div class="container-fluid">
-    <div class="col-6">
+<header
+  style="background-color: #1ca2b8; color: black; padding: 10px 20px; font-size: 20px; display: flex; align-items: center;"
+>
+  <img
+    src="https://pbs.twimg.com/profile_images/993674618652254208/dYmlscab_400x400.jpg"
+    alt="TV Icon"
+    style="height: 30px; margin-left: -5px; margin-right: 5px;"
+  />
+  TV Series
+</header>
 
-        <table class="table table-striped">
-            <thead class="table-dark">
-                <tr>
-                    <th class="h4">#</th>
-                    <th class="h4">Name</th>
-                    <th class="h4">Channel</th>
-                    <th class="h4">Seasons</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let s of series">
-                    <td>{{ s.id }}</td>
-                    <td>
-                        <a href="#" (click)="selectSerie(s); $event.preventDefault();"
-                            style="color: #007bff; text-decoration: none;">
-                            {{ s.name }}
-                        </a>
-                    </td>
-                    <td>{{ s.channel }}</td>
-                    <td>{{ s.seasons }}</td>
+<div class="container-fluid mt-4">
+  <div class="row">
+    <!-- Columna izquierda: Tabla -->
+    <div class="col-md-6" style="margin-left: 75px; width: 45%;">
+      <table class="table table-hover" id="series-table">
+        <thead style="background-color: #ffffff;">
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Channel</th>
+            <th>Seasons</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let s of series" style="background-color: #f8f9fa;">
+            <td><strong>{{ s.id }}</strong></td>
+            <td>
+              <a
+                href="#"
+                (click)="selectSerie(s); $event.preventDefault();"
+                style="color: #007bff; text-decoration: none;"
+              >
+                {{ s.name }}
+              </a>
+            </td>
+            <td>{{ s.channel }}</td>
+            <td>{{ s.seasons }}</td>
+          </tr>
+        </tbody>
+      </table>
 
-                </tr>
-
-            </tbody>
-        </table>
-        <p class="fw-semibold"> Seasons Average {{avgSeasons | number: '1.0-0'}}
-        </p>
-        <div class="card shadow-sm" *ngIf="selectedSerie">
-            <img [src]="selectedSerie.image" class="card-img-top" [alt]="selectedSerie.name" />
-            <div class="card-body">
-                <h5 class="card-title">{{ selectedSerie.name }}</h5>
-                <p class="card-text">{{ selectedSerie.description }}</p>
-                <a [href]="selectedSerie.website" target="_blank" style="color: #007bff; text-decoration: none;">
-                    {{ selectedSerie.website }}
-                </a>
-            </div>
-        </div>
-
+      <p id="average-seasons" style="margin-top: 10px; margin-left: 20px;">
+        Seasons average: {{ avgSeasons | number: '1.0-0' }}
+      </p>
     </div>
+
+    <!-- Columna derecha: Detalle -->
+    <div class="col-md-6" *ngIf="selectedSerie">
+      <div
+        class="card shadow-sm mt-2"
+        style="width: 20rem; margin-left: 40px; border: none;"
+      >
+        <img
+          [src]="selectedSerie.image"
+          class="card-img-top"
+          [alt]="selectedSerie.name"
+          style="width: 100%; height: auto;"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ selectedSerie.name }}</h5>
+          <p class="card-text">{{ selectedSerie.description }}</p>
+          <a
+            [href]="selectedSerie.website"
+            target="_blank"
+            style="color: #007bff; text-decoration: none;"
+          >
+            {{ selectedSerie.website }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
