@@ -52,7 +52,7 @@
         style="width: 20rem; margin-left: 40px; border: none;"
       >
         <img
-          [src]="selectedSerie.image"
+          [src]="selectedSerie.poster"
           class="card-img-top"
           [alt]="selectedSerie.name"
           style="width: 100%; height: auto;"
@@ -61,11 +61,11 @@
           <h5 class="card-title">{{ selectedSerie.name }}</h5>
           <p class="card-text">{{ selectedSerie.description }}</p>
           <a
-            [href]="selectedSerie.website"
+            [href]="selectedSerie.webpage"
             target="_blank"
             style="color: #007bff; text-decoration: none;"
           >
-            {{ selectedSerie.website }}
+            {{ selectedSerie.webpage }}
           </a>
         </div>
       </div>
